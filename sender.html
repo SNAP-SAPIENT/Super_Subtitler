@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Subtitler</title>
+	<script  type="text/javascript" charset="utf-8">
+		if("WebSocket" in window) {
+			//we need to start Processing before we can access the socket.
+			var ws = new WebSocket('ws://localhost:8080/p5websocket');
+			console.log('socket opened', ws);
+
+		} else {
+			//not supported
+			alert('WebSocket not supported');
+		}
+
+		//start speech recognition
+		//currently only Chrome supports this
+
+		var recognition = new webkitSpeechRecognition();
+
+		recognition.continuous = true;
+
+		recognition.onstart = function() {
+			permission = true;
+		}
+
+		recognition.onend = function() {
+			permission = false;
+		}
+
+		recognition.onresult = function(event) {
+			console.log(event);
+			var transcript = event.results[event.results.length-1][0].transcript;
+
+			//send to websocket
+			ws.send(transcript);
+		}
+
+		recognition.start();
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>
