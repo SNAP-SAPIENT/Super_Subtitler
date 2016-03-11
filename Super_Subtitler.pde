@@ -46,6 +46,7 @@ void draw()
   //text("testing here", 100, 100);
   canvas.endDraw();
   image(canvas, 0, 0);
+  // AN ISSUE EXISTS WITH OPENGL AND WRITING TO OPENGL ON THIS LINE
   //server.sendImage(canvas);
 }
 
