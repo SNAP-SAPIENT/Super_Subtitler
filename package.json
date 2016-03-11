@@ -1,0 +1,23 @@
+{
+  "name": "super-subtitler-pde",
+  "version": "1.0.0",
+  "description": "subtitling app made possible through gulp and the webkitSpeechRecognition() API",
+  "main": "index.js",
+  "scripts": {
+    "test": "node text.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scottdj92/Super_Subtitler-PDE.git"
+  },
+  "author": "Scott Jones",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/scottdj92/Super_Subtitler-PDE/issues"
+  },
+  "homepage": "https://github.com/scottdj92/Super_Subtitler-PDE#readme",
+  "devDependencies": {
+    "express": "^4.13.4",
+    "gulp": "^3.9.1"
+  }
+}

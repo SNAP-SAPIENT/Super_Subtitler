@@ -19,6 +19,7 @@
 		var recognition = new webkitSpeechRecognition();
 
 		recognition.continuous = true;
+		recognition.interimresults = true;
 
 		recognition.onstart = function() {
 			permission = true;
