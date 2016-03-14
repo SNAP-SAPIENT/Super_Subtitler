@@ -32,8 +32,8 @@ void setup()
   // WEBSOCKET SETUP
   socket = new WebSocketP5(this, 8080);
   // LOAD FONT
-  font = loadFont("SapientCentroSlab-Medium-50.vlw");
-  textFont(font, 50);
+  font = loadFont("Serif.bold-48.vlw");
+  textFont(font, 48);
 }
 
 
@@ -47,7 +47,7 @@ void draw()
   //canvas.rotateX(frameCount * 0.01);
   //canvas.rotateY(frameCount * 0.01);  
   //canvas.box(150);
-  text("testing here", 100, 100);
+  //text("testing here", 100, 100);
   canvas.endDraw();
   image(canvas, 0, 0);
   // AN ISSUE EXISTS WITH OPENGL AND WRITING TO OPENGL ON THIS LINE
