@@ -12,6 +12,7 @@ SyphonServer server;
 float factor;
 WebSocketP5 socket;
 PFont font;
+Spout spout;
 
 
 void setup()
@@ -19,11 +20,11 @@ void setup()
   // DISPLAY SETUP
   size(640, 480, P3D);
   canvas = createGraphics(640, 480, P3D);
-  // SYPHON SETUP
-  server = new SyphonServer(this, "Speech Input");
-  // OSC SETUP
-  //oscP5 = new OscP5(this, 5001);
-  //myBroadcastLocation = new NetAddress("127.0.0.1", 5000);
+  // SYPHON SETUP - OSX Only
+  //server = new SyphonServer(this, "Speech Input");
+  // SPOUT SETUP - Windows Only
+  spout = new Spout();
+  spout.initSender("Super-Subtitler", width, height);
   factor = 1;
   // WEBSOCKET SETUP
   socket = new WebSocketP5(this, 8080);
@@ -48,8 +49,15 @@ void draw()
   image(canvas, 0, 0);
   // AN ISSUE EXISTS WITH OPENGL AND WRITING TO OPENGL ON THIS LINE
   //server.sendImage(canvas);
+  
+  //SPOUT USAGE
+  spout.sendTexture(canvas);
 }
 
+void exit() {
+  spout.closeSender();
+  super.exit();
+}
 
 // SEND ORDER TO MILLUMIN
 //void mouseMoved()
