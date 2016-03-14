@@ -1,6 +1,6 @@
 import muthesius.net.*; //<>//
 
-import codeanticode.syphon.*;
+//import codeanticode.syphon.*;
 import processing.opengl.*;
 
 //import muthesius.net.*;
@@ -8,7 +8,7 @@ import processing.opengl.*;
 
 
 PGraphics canvas;
-SyphonServer server;
+//SyphonServer server;
 float factor;
 WebSocketP5 socket;
 PFont font;
