@@ -1,4 +1,4 @@
-import muthesius.net.*; //<>//
+import muthesius.net.*; //<>// //<>//
 
 //import codeanticode.syphon.*;
 import processing.opengl.*;
@@ -20,6 +20,9 @@ void setup()
   // DISPLAY SETUP
   size(640, 480, P3D);
   canvas = createGraphics(640, 480, P3D);
+  textureMode(NORMAL);
+  textMode(SHAPE);
+  textSize(48);
   // SYPHON SETUP - OSX Only
   //server = new SyphonServer(this, "Speech Input");
   // SPOUT SETUP - Windows Only
@@ -44,15 +47,19 @@ void draw()
   //canvas.rotateX(frameCount * 0.01);
   //canvas.rotateY(frameCount * 0.01);  
   //canvas.box(150);
-  //text("testing here", 100, 100);
+  text("testing here", 100, 100);
   canvas.endDraw();
   image(canvas, 0, 0);
   // AN ISSUE EXISTS WITH OPENGL AND WRITING TO OPENGL ON THIS LINE
   //server.sendImage(canvas);
   
-  //SPOUT USAGE
-  spout.sendTexture(canvas);
+  //convertCanvasToTexture(canvas);
+  spout.sendTexture();
 }
+
+//void convertCanvasToTexture(canvas) {
+    
+//}
 
 void exit() {
   spout.closeSender();
