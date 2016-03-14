@@ -6,7 +6,7 @@ Make sure you have:
 
 1. Google Chrome
 2. Processing with the following Libraries:
-	1. WebSocketsP5
+	1. WebSocketsP5. This is distributed with this repo. Move the websocketP5 folder to your `/libraries` folder
 3. Resolume Arena (or Millumin/MadMapper for OSX)
 4. Drop in the `sender.html` file to any server of your choice.
 
