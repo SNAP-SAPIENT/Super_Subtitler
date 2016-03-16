@@ -2,7 +2,12 @@
 <html>
 <head>
 	<title>Subtitler</title>
-	<script  type="text/javascript" charset="utf-8">
+</head>
+<body>
+	<h1>Super-Subtitler Intro page</h1>
+	<button id='start_diction'>Start</button>
+</body>
+<script  type="text/javascript" charset="utf-8">
 		if("WebSocket" in window) {
 			//we need to start Processing before we can access the socket.
 			var ws = new WebSocket('ws://localhost:8080/p5websocket');
@@ -39,9 +44,11 @@
 
 		recognition.start();
 
-	</script>
-</head>
-<body>
-	<h1>Super-Subtitler Intro page</h1>
-</body>
+		start = document.getElementById('start_diction');
+
+		start.onclick = function() {
+			recognition.start();
+		}
+
+</script>
 </html>
