@@ -83,13 +83,13 @@ void stop() {
 //  text(msg, 100, 100);
 //}
 
-//void webSocketOnOpen(WebSocketConnection con) {
-//  println("a client joined");
-//}
+void webSocketOnOpen(WebSocketConnection con) {
+ println("a client joined");
+}
 
-//void webSocketOnClose(WebSocketConnection con) {
-//  println("a client exited");
-//}
+void webSocketOnClose(WebSocketConnection con) {
+ println("a client exited");
+}
 
 
 // RECEIVE ORDER FROM MILLUMIN
