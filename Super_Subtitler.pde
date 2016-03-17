@@ -1,10 +1,9 @@
-import muthesius.net.*; //<>// //<>//
+import muthesius.net.*; //<>//
 
 //import codeanticode.syphon.*;
 import processing.opengl.*;
 
-//import muthesius.net.*;
-//import org.webbitserver.*;
+import org.webbitserver.*;
 
 
 PGraphics canvas;
@@ -12,7 +11,7 @@ PGraphics canvas;
 float factor;
 WebSocketP5 socket;
 PFont font;
-Spout spout;
+//Spout spout;
 
 
 void setup()
@@ -26,14 +25,14 @@ void setup()
   // SYPHON SETUP - OSX Only
   //server = new SyphonServer(this, "Speech Input");
   // SPOUT SETUP - Windows Only
-  spout = new Spout();
-  spout.initSender("Super-Subtitler", width, height);
+  //spout = new Spout();
+  //spout.initSender("Super-Subtitler", width, height);
   factor = 1;
   // WEBSOCKET SETUP
   socket = new WebSocketP5(this, 8080);
   // LOAD FONT
-  font = loadFont("Serif.bold-48.vlw");
-  textFont(font, 48);
+  //font = loadFont("Serif.bold-48.vlw");
+  //textFont(font, 48);
 }
 
 
@@ -54,7 +53,7 @@ void draw()
   //server.sendImage(canvas);
   
   //convertCanvasToTexture(canvas);
-  spout.sendTexture();
+  //spout.sendTexture();
 }
 
 //void convertCanvasToTexture(canvas) {
@@ -62,8 +61,12 @@ void draw()
 //}
 
 void exit() {
-  spout.closeSender();
+  //spout.closeSender();
   super.exit();
+}
+
+void stop() {
+ socket.stop();
 }
 
 // SEND ORDER TO MILLUMIN
@@ -72,10 +75,6 @@ void exit() {
 //  OscMessage myOscMessage = new OscMessage("/millumin/layer/opacity/0");
 //  myOscMessage.add(100*mouseX/width);
 //  oscP5.send(myOscMessage, myBroadcastLocation);
-//}
-
-//void stop() {
-//  socket.stop();
 //}
 
 //void webSocketOnMessage(WebSocketConnection con, String msg) {
