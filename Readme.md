@@ -27,3 +27,10 @@ For any issues, please see the docs for each respective application:
 	1. [Syphon](http://syphon.v002.info/)
 3. [Resolume Arena/Avenue](https://resolume.com/)
 	1. [Millumin](https://millumin2.com)
+
+
+## FAQ/Common Issues
+```A library requires native code that is not imported```
+Make sure you are running the correct ```.dll``` files for your OS. 
+
+This issue is usually caused by a 32-bit .dll being imported for a 64-bit and vice versa. These files can be found in their respective folders in the Spout directory: ```Spout/PROCESSING/```
