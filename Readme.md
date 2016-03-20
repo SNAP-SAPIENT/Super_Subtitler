@@ -34,3 +34,5 @@ For any issues, please see the docs for each respective application:
 Make sure you are running the correct ```.dll``` files for your OS. 
 
 This issue is usually caused by a 32-bit .dll being imported for a 64-bit and vice versa. These files can be found in their respective folders in the Spout directory: ```Spout/PROCESSING/```
+
+Make sure you are connecting to the websocket server either locally or through HTTP. HTTPS doesn't behave very well with the webbitserver library.
