@@ -9,8 +9,9 @@
 </body>
 <script  type="text/javascript" charset="utf-8">
 		if("WebSocket" in window) {
+			//MAKE SURE YOU INPUT YOUR IP ADDRESS BEFORE STARTING THE SERVER
 			//we need to start Processing before we can access the socket.
-			var ws = new WebSocket('ws://localhost:8080/p5websocket');
+			var ws = new WebSocket('ws://192.168.1.252:8080/p5websocket');
 			console.log('socket opened', ws);
 
 		} else {
@@ -18,20 +19,25 @@
 			alert('WebSocket not supported');
 		}
 
+		ws.onopen = function() {
+			console.log("we're connected", ws);
+		}
+
 		//start speech recognition
 		//currently only Chrome supports this
 
 		var recognition = new webkitSpeechRecognition();
 
-		recognition.continuous = true;
-		recognition.interimresults = true;
+		recognition.continuous = false;
 
 		recognition.onstart = function() {
-			permission = true;
+			// permission = true;
+			console.log('diction started');
 		}
 
 		recognition.onend = function() {
-			permission = false;
+			// permission = false;
+			console.log('diction ended');
 		}
 
 		recognition.onresult = function(event) {

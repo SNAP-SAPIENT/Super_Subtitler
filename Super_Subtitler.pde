@@ -1,10 +1,9 @@
-import muthesius.net.*; //<>// //<>//
+import muthesius.net.*; //<>//
 
 //import codeanticode.syphon.*;
 import processing.opengl.*;
 
-//import muthesius.net.*;
-//import org.webbitserver.*;
+import org.webbitserver.*;
 
 
 PGraphics canvas;
@@ -12,7 +11,7 @@ PGraphics canvas;
 float factor;
 WebSocketP5 socket;
 PFont font;
-Spout spout;
+//Spout spout;
 
 
 void setup()
@@ -26,14 +25,14 @@ void setup()
   // SYPHON SETUP - OSX Only
   //server = new SyphonServer(this, "Speech Input");
   // SPOUT SETUP - Windows Only
-  spout = new Spout();
-  spout.initSender("Super-Subtitler", width, height);
+  //spout = new Spout();
+  //spout.initSender("Super-Subtitler", width, height);
   factor = 1;
   // WEBSOCKET SETUP
   socket = new WebSocketP5(this, 8080);
   // LOAD FONT
-  font = loadFont("Serif.bold-48.vlw");
-  textFont(font, 48);
+  //font = loadFont("Serif.bold-48.vlw");
+  //textFont(font, 48);
 }
 
 
@@ -54,7 +53,7 @@ void draw()
   //server.sendImage(canvas);
   
   //convertCanvasToTexture(canvas);
-  spout.sendTexture();
+  //spout.sendTexture();
 }
 
 //void convertCanvasToTexture(canvas) {
@@ -62,8 +61,12 @@ void draw()
 //}
 
 void exit() {
-  spout.closeSender();
+  //spout.closeSender();
   super.exit();
+}
+
+void stop() {
+ socket.stop();
 }
 
 // SEND ORDER TO MILLUMIN
@@ -74,23 +77,19 @@ void exit() {
 //  oscP5.send(myOscMessage, myBroadcastLocation);
 //}
 
-//void stop() {
-//  socket.stop();
-//}
+void websocketOnMessage(WebSocketConnection con, String msg) {
+println(msg);
+//if (msg.contains("hello")) println("yay");
+//text(msg, 100, 100);
+}
 
-//void webSocketOnMessage(WebSocketConnection con, String msg) {
-//  println(msg);
-//  if (msg.contains("hello")) println("yay");
-//  text(msg, 100, 100);
-//}
+void websocketOnOpen(WebSocketConnection con) {
+println("a client joined");
+}
 
-//void webSocketOnOpen(WebSocketConnection con) {
-//  println("a client joined");
-//}
-
-//void webSocketOnClose(WebSocketConnection con) {
-//  println("a client exited");
-//}
+void websocketOnClose(WebSocketConnection con) {
+println("a client exited");
+}
 
 
 // RECEIVE ORDER FROM MILLUMIN
