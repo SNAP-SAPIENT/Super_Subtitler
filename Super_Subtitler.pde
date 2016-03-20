@@ -77,18 +77,18 @@ void stop() {
 //  oscP5.send(myOscMessage, myBroadcastLocation);
 //}
 
-//void webSocketOnMessage(WebSocketConnection con, String msg) {
-//  println(msg);
-//  if (msg.contains("hello")) println("yay");
-//  text(msg, 100, 100);
-//}
-
-void webSocketOnOpen(WebSocketConnection con) {
- println("a client joined");
+void websocketOnMessage(WebSocketConnection con, String msg) {
+println(msg);
+//if (msg.contains("hello")) println("yay");
+//text(msg, 100, 100);
 }
 
-void webSocketOnClose(WebSocketConnection con) {
- println("a client exited");
+void websocketOnOpen(WebSocketConnection con) {
+println("a client joined");
+}
+
+void websocketOnClose(WebSocketConnection con) {
+println("a client exited");
 }
 
 
