@@ -24,13 +24,17 @@
 			console.log("we're connected", ws);
 		}
 
+		ws.onclose = function() {
+			console.log("we're disconnected", ws);
+		}
+
 		//start speech recognition
 		//currently only Chrome supports this
 
 		var recognition = new webkitSpeechRecognition();
 
 		recognition.continuous = true;
-		recognition.interimResults = true;
+		recognition.interimResults = false;
 
 		recognition.onstart = function() {
 			// permission = true;

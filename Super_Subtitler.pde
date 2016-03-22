@@ -1,4 +1,4 @@
-import muthesius.net.*; //<>//
+import muthesius.net.*; //<>// //<>//
 
 //import codeanticode.syphon.*;
 import processing.opengl.*;
@@ -15,7 +15,8 @@ PFont font;
 boolean speechOn;
 String speechString;
 int currentTime;
-int wait = 1000;
+int wait = 100;
+int renderCount = 0;
 
 
 void setup()
@@ -52,6 +53,7 @@ void setup()
 void draw()
 {
   canvas.beginDraw();
+  //canvas.background(127, 127, 127);
   //canvas.background(127, 127*factor, 127*factor);
   //canvas.lights();
   //canvas.translate(width/2, height/2);
@@ -68,9 +70,10 @@ void draw()
   if(speechOn && (millis() - currentTime >= wait)) {
    text(speechString, 100, 100);
    currentTime = millis();
+   canvas.background(127, 127, 127);
   } else {
    //IF NO STRING, CREATE COLORED BACKGROUND
-   canvas.background(127, 127, 127);
+   //canvas.background(127, 127, 127);
   }
   
   //convertCanvasToTexture(canvas);
@@ -95,12 +98,15 @@ println(msg);
 //if (msg.contains("hello")) println("yay");
 //text(msg, 100, 100);
 
-  speechOn = true;
-  speechString = msg;
-  
-  //if (speechString == speechString) {
-  //  speechOn = false;
-  //}
+  if (renderCount > 1) {  
+    speechOn = false;
+    speechString = msg;
+    
+    speechOn = true;
+  } else {
+    speechOn = true;
+    speechString = msg;
+  }
 }
 
 void websocketOnOpen(WebSocketConnection con) {
