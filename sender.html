@@ -11,7 +11,8 @@
 		if("WebSocket" in window) {
 			//MAKE SURE YOU INPUT YOUR IP ADDRESS BEFORE STARTING THE SERVER
 			//we need to start Processing before we can access the socket.
-			var ws = new WebSocket('ws://192.168.1.252:8080/p5websocket');
+			//var ws = new WebSocket('ws://192.168.1.252:8080/p5websocket');
+			var ws = new WebSocket('ws://10.221.101.74:8080/p5websocket');
 			console.log('socket opened', ws);
 
 		} else {
@@ -28,7 +29,8 @@
 
 		var recognition = new webkitSpeechRecognition();
 
-		recognition.continuous = false;
+		recognition.continuous = true;
+		recognition.interimResults = true;
 
 		recognition.onstart = function() {
 			// permission = true;

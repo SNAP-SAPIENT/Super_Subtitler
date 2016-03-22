@@ -12,6 +12,8 @@ float factor;
 WebSocketP5 socket;
 PFont font;
 //Spout spout;
+boolean speechOn;
+String speechString;
 
 
 void setup()
@@ -22,6 +24,7 @@ void setup()
   textureMode(NORMAL);
   textMode(SHAPE);
   textSize(48);
+  frameRate(30);
   // SYPHON SETUP - OSX Only
   //server = new SyphonServer(this, "Speech Input");
   // SPOUT SETUP - Windows Only
@@ -33,6 +36,11 @@ void setup()
   // LOAD FONT
   //font = loadFont("Serif.bold-48.vlw");
   //textFont(font, 48);
+  
+  //INSANTIATE TEXT BOOLEAN
+  speechOn = false;
+  //CREATE EMPTY STRING
+  speechString = "";
 }
 
 
@@ -51,6 +59,14 @@ void draw()
   image(canvas, 0, 0);
   // AN ISSUE EXISTS WITH OPENGL AND WRITING TO OPENGL ON THIS LINE
   //server.sendImage(canvas);
+  
+  //DRAW TEXT WHEN WEBSOCKET GETS DATA BACK
+  //if(speechOn) {
+  //  text(speechString, 100, 100);
+  //} else {
+  //  //IF NO STRING, CREATE COLORED BACKGROUND
+  //  canvas.background(127, 127, 127);
+  //}
   
   //convertCanvasToTexture(canvas);
   //spout.sendTexture();
@@ -81,6 +97,13 @@ void websocketOnMessage(WebSocketConnection con, String msg) {
 println(msg);
 //if (msg.contains("hello")) println("yay");
 //text(msg, 100, 100);
+
+  speechOn = true;
+  speechString = msg;
+  
+  //if (speechString == speechString) {
+  //  speechOn = false;
+  //}
 }
 
 void websocketOnOpen(WebSocketConnection con) {
