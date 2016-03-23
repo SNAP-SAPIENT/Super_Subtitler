@@ -94,7 +94,7 @@ void stop() {
 }
 
 void websocketOnMessage(WebSocketConnection con, String msg) {
-println(msg);
+//println(msg);
 //if (msg.contains("hello")) println("yay");
 //text(msg, 100, 100);
 
