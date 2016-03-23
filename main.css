@@ -1,0 +1,19 @@
+body {
+	color: white;
+	margin: 0 auto;
+	max-width: 960px;
+	background: linear-gradient(left top, #03ADE8, #0334E8);
+	background: -webkit-linear-gradient(left top, #03ADE8, #0334E8);
+	background: -moz-linear-gradient(left top, #03ADE8, #0334E8);
+}
+
+#socketURL {
+	font-family: "Menlo";
+	font-size: 13pt;
+	display: inline-block;
+}
+
+.footer {
+	position: absolute;
+	bottom: 2em;
+}
