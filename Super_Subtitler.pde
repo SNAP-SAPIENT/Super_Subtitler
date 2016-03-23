@@ -1,4 +1,4 @@
-import muthesius.net.*; //<>//
+import muthesius.net.*; //<>// //<>//
 
 //import codeanticode.syphon.*;
 import processing.opengl.*;
@@ -14,6 +14,9 @@ PFont font;
 //Spout spout;
 boolean speechOn;
 String speechString;
+int currentTime;
+int wait = 100;
+int renderCount = 0;
 
 
 void setup()
@@ -22,7 +25,6 @@ void setup()
   size(640, 480, P3D);
   canvas = createGraphics(640, 480, P3D);
   textureMode(NORMAL);
-  textMode(SHAPE);
   textSize(48);
   frameRate(30);
   // SYPHON SETUP - OSX Only
@@ -41,6 +43,9 @@ void setup()
   speechOn = false;
   //CREATE EMPTY STRING
   speechString = "";
+  
+  //START TIME
+  currentTime = millis();
 }
 
 
@@ -48,6 +53,7 @@ void setup()
 void draw()
 {
   canvas.beginDraw();
+  //canvas.background(127, 127, 127);
   //canvas.background(127, 127*factor, 127*factor);
   //canvas.lights();
   //canvas.translate(width/2, height/2);
@@ -60,13 +66,15 @@ void draw()
   // AN ISSUE EXISTS WITH OPENGL AND WRITING TO OPENGL ON THIS LINE
   //server.sendImage(canvas);
   
-  //DRAW TEXT WHEN WEBSOCKET GETS DATA BACK
-  //if(speechOn) {
-  //  text(speechString, 100, 100);
-  //} else {
-  //  //IF NO STRING, CREATE COLORED BACKGROUND
-  //  canvas.background(127, 127, 127);
-  //}
+  //DRAW TEXT WHEN WEBSOCKET GETS DATA BACK an
+  if(speechOn && (millis() - currentTime >= wait)) {
+   text(speechString, 100, 100);
+   currentTime = millis();
+   canvas.background(127, 127, 127);
+  } else {
+   //IF NO STRING, CREATE COLORED BACKGROUND
+   //canvas.background(127, 127, 127);
+  }
   
   //convertCanvasToTexture(canvas);
   //spout.sendTexture();
@@ -85,25 +93,20 @@ void stop() {
  socket.stop();
 }
 
-// SEND ORDER TO MILLUMIN
-//void mouseMoved()
-//{
-//  OscMessage myOscMessage = new OscMessage("/millumin/layer/opacity/0");
-//  myOscMessage.add(100*mouseX/width);
-//  oscP5.send(myOscMessage, myBroadcastLocation);
-//}
-
 void websocketOnMessage(WebSocketConnection con, String msg) {
-println(msg);
+//println(msg);
 //if (msg.contains("hello")) println("yay");
 //text(msg, 100, 100);
 
-  speechOn = true;
-  speechString = msg;
-  
-  //if (speechString == speechString) {
-  //  speechOn = false;
-  //}
+  if (renderCount > 1) {  
+    speechOn = false;
+    speechString = msg;
+    
+    speechOn = true;
+  } else {
+    speechOn = true;
+    speechString = msg;
+  }
 }
 
 void websocketOnOpen(WebSocketConnection con) {
@@ -113,13 +116,3 @@ println("a client joined");
 void websocketOnClose(WebSocketConnection con) {
 println("a client exited");
 }
-
-
-// RECEIVE ORDER FROM MILLUMIN
-//void oscEvent(OscMessage theOscMessage)
-//{
-//  if ( theOscMessage.addrPattern().equals("/millumin/layer/scale/0") )
-//  {
-//    factor = theOscMessage.get(0).floatValue()/100;
-//  }
-//}
