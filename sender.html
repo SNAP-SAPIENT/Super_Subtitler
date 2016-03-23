@@ -7,8 +7,8 @@
 	<h1>Super-Subtitler Intro page</h1>
 	<h2>We are connected to: <div id='socketURL'></div></h2>
 	<h3>Select a Language:</h3>
-	<select>
-		<option value="en" selected>English</option>
+	<select id="selectLang">
+		<option value="en-US" selected>English</option>
 		<option value="he">Hebrew</option>
 		<option value="es-MX">Spanish</option>
 		<option value="fr-FR">French</option>
@@ -21,7 +21,8 @@
 			//MAKE SURE YOU INPUT YOUR IP ADDRESS BEFORE STARTING THE SERVER
 			//we need to start Processing before we can access the socket.
 			//var ws = new WebSocket('ws://192.168.1.252:8080/p5websocket');
-			var ws = new WebSocket('ws://10.221.204.37:8080/p5websocket');
+			//var ws = new WebSocket('ws://10.221.204.37:8080/p5websocket');
+			var ws = new WebSocket('ws://10.221.101.70:8080/p5websocket');
 			console.log('socket opened', ws);
 
 		} else {
@@ -32,20 +33,23 @@
 		ws.onopen = function() {
 			console.log("we're connected", ws);
 			document.getElementById('socketURL').innerHTML = ws.url;
+
+			//only fire speech event when we are connected to the websocket server
+			//start speech recognition
+			//currently only Chrome supports this
+
+			var recognition = new webkitSpeechRecognition();
+
+			recognition.continuous = true;
+			recognition.interimResults = true;
+			recognition.lang = document.getElementById('selectLang').value;
+
+			recognition.start();
 		}
 
 		ws.onclose = function() {
 			console.log("we're disconnected", ws);
 		}
-
-		//start speech recognition
-		//currently only Chrome supports this
-
-		var recognition = new webkitSpeechRecognition();
-
-		recognition.continuous = true;
-		recognition.interimResults = true;
-		recognition.lang = 'en-us';
 
 		recognition.onstart = function() {
 			// permission = true;
@@ -66,11 +70,10 @@
 			ws.send(transcript);
 		}
 
-		recognition.start();
-
 		start = document.getElementById('start_diction');
 
 		start.onclick = function() {
+			recognition.lang = document.getElementById('selectLang').value;
 			recognition.start();
 		}
 
