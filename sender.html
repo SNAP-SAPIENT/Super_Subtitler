@@ -5,6 +5,15 @@
 </head>
 <body>
 	<h1>Super-Subtitler Intro page</h1>
+	<h2>We are connected to: <div id='socketURL'></div></h2>
+	<h3>Select a Language:</h3>
+	<select>
+		<option value="en" selected>English</option>
+		<option value="he">Hebrew</option>
+		<option value="es-MX">Spanish</option>
+		<option value="fr-FR">French</option>
+		<option value="de-DE">German</option>
+	</select>
 	<button id='start_diction'>Start</button>
 </body>
 <script  type="text/javascript" charset="utf-8">
@@ -22,6 +31,7 @@
 
 		ws.onopen = function() {
 			console.log("we're connected", ws);
+			document.getElementById('socketURL').innerHTML = ws.url;
 		}
 
 		ws.onclose = function() {
