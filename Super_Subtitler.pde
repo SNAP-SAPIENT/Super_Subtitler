@@ -11,7 +11,7 @@ PGraphics canvas;
 float factor;
 WebSocketP5 socket;
 PFont font;
-//Spout spout;
+Spout spout;
 boolean speechOn;
 String speechString;
 int currentTime;
@@ -30,8 +30,8 @@ void setup()
   // SYPHON SETUP - OSX Only
   //server = new SyphonServer(this, "Speech Input");
   // SPOUT SETUP - Windows Only
-  //spout = new Spout();
-  //spout.initSender("Super-Subtitler", width, height);
+  spout = new Spout();
+  spout.initSender("Super-Subtitler", width, height);
   factor = 1;
   // WEBSOCKET SETUP
   socket = new WebSocketP5(this, 8080);
@@ -77,7 +77,7 @@ void draw()
   }
   
   //convertCanvasToTexture(canvas);
-  //spout.sendTexture();
+  spout.sendTexture();
 }
 
 //void convertCanvasToTexture(canvas) {
