@@ -5,8 +5,8 @@
 	<link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
-	<h1>Super-Subtitler Intro page</h1>
-	<h2>We are connected to: <div id='socketURL'></div></h2>
+	<h1>The Super-Subtitler</h1>
+	<h2>Connected to: <div id='socketURL'></div></h2>
 	<h3>Select a Language:</h3>
 	<select id="selectLang">
 		<option value="en-US" selected>English</option>
@@ -15,16 +15,13 @@
 		<option value="fr-FR">French</option>
 		<option value="de-DE">German</option>
 	</select>
-	<button id='start_diction'>Start</button>
+	<button id='start_diction'>Go!</button>
 
-	<span class='footer'>Created by Scott Jones, Ilan Frankel, and Mo Morales as a part of the SapientNitro SNAP Initiative</span>
+	<span class='footer'>Created by Scott Jones, Ilan Frankel, and Mo Morales for SNAP</span>
 </body>
 <script  type="text/javascript" charset="utf-8">
 		if("WebSocket" in window) {
 			//MAKE SURE YOU INPUT YOUR IP ADDRESS BEFORE STARTING THE SERVER
-			//we need to start Processing before we can access the socket.
-			//var ws = new WebSocket('ws://192.168.1.252:8080/p5websocket');
-			//var ws = new WebSocket('ws://10.221.204.37:8080/p5websocket');
 			var ws = new WebSocket('ws://10.221.101.70:8080/p5websocket');
 			console.log('socket opened', ws);
 			console.log('recognition insantiated');

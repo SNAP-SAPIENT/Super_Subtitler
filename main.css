@@ -17,4 +17,5 @@ body {
 .footer {
 	position: absolute;
 	bottom: 2em;
+	text-align: center;
 }
