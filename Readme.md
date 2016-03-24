@@ -31,8 +31,13 @@ For any issues, please see the docs for each respective application:
 
 ## FAQ/Common Issues
 ```A library requires native code that is not imported```
+
 Make sure you are running the correct ```.dll``` files for your OS. 
 
 This issue is usually caused by a 32-bit .dll being imported for a 64-bit and vice versa. These files can be found in their respective folders in the Spout directory: ```Spout/PROCESSING/```
 
 Make sure you are connecting to the websocket server either locally or through HTTP. HTTPS doesn't behave very well with the webbitserver library.
+
+My web browser isn't connecting to the websocket server!
+
+Make sure that you are edit the IP address in ```sender.html``` to match up with the IP address of your machine.

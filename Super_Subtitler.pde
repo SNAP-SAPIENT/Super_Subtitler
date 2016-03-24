@@ -46,6 +46,8 @@ void setup()
   
   //START TIME
   currentTime = millis();
+  
+  canvas.background(127, 127, 127);
 }
 
 
@@ -68,12 +70,9 @@ void draw()
   
   //DRAW TEXT WHEN WEBSOCKET GETS DATA BACK an
   if(speechOn && (millis() - currentTime >= wait)) {
-   text(speechString, 100, 100);
+   text(speechString, 100, 100, 640, 480);
    currentTime = millis();
    canvas.background(127, 127, 127);
-  } else {
-   //IF NO STRING, CREATE COLORED BACKGROUND
-   //canvas.background(127, 127, 127);
   }
   
   //convertCanvasToTexture(canvas);

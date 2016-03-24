@@ -1,5 +1,6 @@
 body {
 	color: white;
+	font-family: "Helvetica";
 	margin: 0 auto;
 	max-width: 960px;
 	background: linear-gradient(left top, #03ADE8, #0334E8);
