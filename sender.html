@@ -11,9 +11,10 @@
 	<select id="selectLang">
 		<option value="en-US" selected>English</option>
 		<option value="he">Hebrew</option>
-		<option value="es-MX">Spanish</option>
-		<option value="fr-FR">French</option>
-		<option value="de-DE">German</option>
+		<option value="es">Spanish</option>
+		<option value="fr">French</option>
+		<option value="de">German</option>
+		<option value="zh">Chinese</option>
 	</select>
 	<button id='start_diction'>Go!</button>
 
@@ -66,8 +67,33 @@
 			console.log(event);
 			var transcript = event.results[event.results.length-1][0].transcript;
 
-			//send to websocket
-			ws.send(transcript);
+			//add ajax call to translate API here:
+			//source is the source language (get this from recognition.lang)
+			//target is the target language to be translated TO (en is english)
+			//q is query (var transcript)
+			//GET https://www.googleapis.com/language/translate/v2?key=AIzaSyC67QxLvpQXXyCI9TWYd5giKl0QeMXHXnU&source=en&target=en&q=Hello%20world
+			
+			var request = new XMLHttpRequest();
+			var query = 'https://www.googleapis.com/language/translate/v2?key=AIzaSyC67QxLvpQXXyCI9TWYd5giKl0QeMXHXnU&source=en&target=en&q=';
+			//append source language
+			var sourceLanguage = recognition.lang;
+			query = query.replace('source=en', 'source=' + sourceLanguage);
+			//append transcript
+			query += transcript;
+			console.log(query);
+
+			request.onreadystatechange = function() {
+				if (request.readyState === 4 && request.status === 200) {
+					console.log(request.responseText);
+					returnedData = JSON.parse(request.responseText);
+					//send to websocket
+					ws.send(returnedData.data.translations[0].translatedText);
+				}
+			}
+
+			//open and send request
+			request.open('GET', query, true);
+			request.send();
 		}
 
 		start = document.getElementById('start_diction');
