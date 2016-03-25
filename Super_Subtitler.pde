@@ -68,7 +68,7 @@ void draw()
   
   //DRAW TEXT WHEN WEBSOCKET GETS DATA BACK an
   if(speechOn && (millis() - currentTime >= wait)) {
-   text(speechString, 50, 50, 640, 480);
+   text(speechString, 50, 50, 480, 480);
    currentTime = millis();
    canvas.background(127, 127, 127);
   }
