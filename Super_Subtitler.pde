@@ -24,6 +24,7 @@ void setup()
   // DISPLAY SETUP
   size(640, 480, P3D);
   canvas = createGraphics(640, 480, P3D);
+  background(0, 0, 0);
   textureMode(NORMAL);
   textSize(48);
   frameRate(30);
@@ -68,9 +69,9 @@ void draw()
   
   //DRAW TEXT WHEN WEBSOCKET GETS DATA BACK an
   if(speechOn && (millis() - currentTime >= wait)) {
-   text(speechString, 50, 50, 480, 480);
+   text(speechString, 100, 50, 480, 480);
    currentTime = millis();
-   canvas.background(127, 127, 127);
+   canvas.background(0, 0, 0);
   }
   
   //convertCanvasToTexture(canvas);
