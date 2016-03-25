@@ -91,9 +91,14 @@
 				}
 			}
 
-			//open and send request
-			request.open('GET', query, true);
-			request.send();
+
+			if (recognition.lang != 'en') {
+				//open and send request - unless it's english
+				request.open('GET', query, true);
+				request.send();
+			} else {
+				ws.send(transcript);
+			}
 		}
 
 		start = document.getElementById('start_diction');
