@@ -1,4 +1,4 @@
-import muthesius.net.*; //<>// //<>//
+import muthesius.net.*; //<>//
 
 //import codeanticode.syphon.*;
 import processing.opengl.*;
@@ -46,8 +46,6 @@ void setup()
   
   //START TIME
   currentTime = millis();
-  
-  canvas.background(127, 127, 127);
 }
 
 
