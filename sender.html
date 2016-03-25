@@ -17,6 +17,7 @@
 		<option value="zh">Chinese</option>
 		<option value="it">Italian</option>
 		<option value="ja">Japanese</option>
+		<option value="vi">Vietnamese</option>
 	</select>
 	<button id='start_diction'>Go!</button>
 
@@ -42,6 +43,8 @@
 			//only fire speech event when we are connected to the websocket server
 			//start speech recognition
 			//currently only Chrome supports this
+			//add more language codes here:
+			//https://sites.google.com/site/tomihasa/google-language-codes
 
 			recognition.continuous = true;
 			recognition.interimResults = true;
