@@ -19,6 +19,9 @@ The chain is as follows:
 3. Processing will read the string, and draw text based on the string that is recieved, then send its frame to Spout
 4. Resolume/Millumin will read the frame data from Spout and display it along with its projection-mapping data.
 
+WARNING: The Google Translate API will only accept requests from ```http://www.virtualmo.com/*```
+If you need change the API: please open an issue in this repo and I will get back to you ASAP. Otherwise, send me an email at ```scottdj92@gmail.com```
+
 ## Documentation
 For any issues, please see the docs for each respective application:
 
