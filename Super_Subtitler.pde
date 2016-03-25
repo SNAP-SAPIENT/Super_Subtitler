@@ -36,10 +36,6 @@ void setup()
   factor = 1;
   // WEBSOCKET SETUP
   socket = new WebSocketP5(this, 8080);
-  // LOAD FONT
-  //font = loadFont("Serif.bold-48.vlw");
-  //textFont(font, 48);
-  
   //INSANTIATE TEXT BOOLEAN
   speechOn = false;
   //CREATE EMPTY STRING
@@ -54,36 +50,23 @@ void setup()
 void draw()
 {
   canvas.beginDraw();
-  //canvas.background(127, 127, 127);
-  //canvas.background(127, 127*factor, 127*factor);
-  //canvas.lights();
-  //canvas.translate(width/2, height/2);
-  //canvas.rotateX(frameCount * 0.01);
-  //canvas.rotateY(frameCount * 0.01);  
-  //canvas.box(150);
-  //text("testing here", 100, 100);
   canvas.endDraw();
   image(canvas, 0, 0);
   // AN ISSUE EXISTS WITH OPENGL AND WRITING TO OPENGL ON THIS LINE
   //server.sendImage(canvas);
   
-  //DRAW TEXT WHEN WEBSOCKET GETS DATA BACK an
+  //DRAW TEXT WHEN WEBSOCKET GETS DATA BACK
   if(speechOn && (millis() - currentTime >= wait)) {
    text(speechString, 100, 50, 480, 480);
    currentTime = millis();
    canvas.background(0, 0, 0);
   }
-  
-  //convertCanvasToTexture(canvas);
+  //SEND TEXTURE TO SPOUT
   spout.sendTexture();
 }
 
-//void convertCanvasToTexture(canvas) {
-    
-//}
-
 void exit() {
-  //spout.closeSender();
+  spout.closeSender();
   super.exit();
 }
 
@@ -93,8 +76,6 @@ void stop() {
 
 void websocketOnMessage(WebSocketConnection con, String msg) {
 //println(msg);
-//if (msg.contains("hello")) println("yay");
-//text(msg, 100, 100);
 
   if (renderCount > 1) {  
     speechOn = false;
