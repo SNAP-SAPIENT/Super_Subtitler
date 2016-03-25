@@ -15,7 +15,7 @@ This project works with WebSockets and Syphon/Spout to pass data between applica
 The chain is as follows:
 
 1. Google Chrome fires its diction events
-2. The transcript is passed in through WebSockets to Processing as a string
+2. The transcript or translation is passed in through WebSockets to Processing as a string
 3. Processing will read the string, and draw text based on the string that is recieved, then send its frame to Spout
 4. Resolume/Millumin will read the frame data from Spout and display it along with its projection-mapping data.
 
