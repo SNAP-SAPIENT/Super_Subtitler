@@ -14,7 +14,7 @@ Make sure you have:
 1. Start up Processing and ensure that Super_Subtitler.pde is open.
 	1. Ensure that spout.pde and JSpout.java are open.
 2. Click the play button to run Processing. You should see the sketch screen open.
-3. Open Google Chrome, navigate to ```http://www.virtualmo.com/SNAP/projector/sender.html``` and see that your machine's IP address is shown in the browser.
+3. Open Google Chrome, navigate to ```http://www.virtualmo.com/SNAP/projector/sender.html``` and see that your machine's IP address is shown in the browser. If you do not see any IP address after "Connected to:" see step 3i.
 	1. If you are not connected to the websocket server, verify that you are connecting to your local machine's IP address in ```sender.html:29```
 4. Open Resolume Arena and drag the Spout source to a layer.
 	1. In the right side of the application, there's a black area with a few tabs.
