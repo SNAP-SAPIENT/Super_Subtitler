@@ -12,12 +12,17 @@ Make sure you have:
 
 ## The Setup
 1. Start up Processing and ensure that Super_Subtitler.pde is open.
-	a. Ensure that spout.pde and JSpout.java are open.
-2. Run Processing. You should see the sketch screen open.
-3. Open Google Chrome and verify that you are connected.
-	a. If you are not connected to the websocket server, verify that you are connecting to your local machine's IP address in ```sender.html```
+	1. Ensure that spout.pde and JSpout.java are open.
+2. Click the play button to run Processing. You should see the sketch screen open.
+3. Open Google Chrome, navigate to ```http://www.virtualmo.com/SNAP/projector/sender.html``` and see that your machine's IP address is shown in the browser.
+	1. If you are not connected to the websocket server, verify that you are connecting to your local machine's IP address in ```sender.html:29```
 4. Open Resolume Arena and drag the Spout source to a layer.
+	1. In the right side of the application, there's a black area with a few tabs.
+	2. There's a tab called "Sources". Click that.
+	3. In the list that appears, there's a field called "SpoutReceiver." Drag that to a square at the top. It should change color.
+	4. Resolume and Processing are now linked. Whatever frame Processing draws will be shown through Resolume.
 5. Whenever you want to fire speech recognition, click the "Go!" button in Chrome after selecting a target language.
+	1. If the recognition crashed, refresh Google Chrome
 
 ## Functionality
 This project works with WebSockets and Syphon/Spout to pass data between applications.
